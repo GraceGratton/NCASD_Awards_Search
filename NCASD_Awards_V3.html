@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NCASD Awards Booklet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800&display=swap');
+  :root {
+    --navy:#1B2F6B;--navy-dark:#122050;--gold:#F5B800;--gold-dark:#D9A400;
+    --white:#ffffff;--radius:14px;--red:#ef4444;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;}
+
+  /* HEADER */
+  header{background:var(--navy-dark);padding:16px 32px;display:flex;align-items:center;gap:18px;border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:50;}
+  .header-logo{width:54px;height:54px;flex-shrink:0;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;line-height:1;}
+  .header-text{display:flex;flex-direction:column;gap:1px;}
+  .header-text .office-line{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;color:var(--white);line-height:1.1;}
+  .header-text .scholar-line{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--gold);line-height:1.1;}
+  .header-text .erau-line{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-top:3px;}
+  .header-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+  .fav-counter{background:var(--gold);color:var(--navy);border-radius:50px;padding:6px 16px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:all 0.2s;display:flex;align-items:center;gap:6px;}
+  .fav-counter:hover{background:var(--gold-dark);transform:scale(1.04);}
+
+  /* NAV */
+  .nav-strip{background:var(--navy-dark);border-bottom:1px solid rgba(255,255,255,0.08);padding:0 32px;display:flex;gap:4px;overflow-x:auto;}
+  .nav-tab{background:none;border:none;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:12px 18px;cursor:pointer;border-bottom:3px solid transparent;transition:all 0.18s;letter-spacing:0.02em;white-space:nowrap;}
+  .nav-tab:hover{color:rgba(255,255,255,0.85);}
+  .nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+  /* CONTROLS */
+  .controls-wrap{max-width:1200px;margin:0 auto;padding:20px 24px 0;}
+  .search-row{display:flex;gap:10px;align-items:center;margin-bottom:16px;}
+  .search-box{position:relative;flex:1;max-width:440px;}
+  .search-box input{width:100%;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.15);border-radius:50px;padding:10px 18px 10px 42px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:all 0.2s;}
+  .search-box input::placeholder{color:rgba(255,255,255,0.35);}
+  .search-box input:focus{border-color:var(--gold);background:rgba(255,255,255,0.1);}
+  .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;opacity:0.4;pointer-events:none;}
+  .search-clear{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:16px;display:none;}
+  .search-clear.visible{display:block;}
+  .result-count{font-size:13px;color:rgba(255,255,255,0.4);font-weight:500;white-space:nowrap;}
+  .filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
+  .filter-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-right:4px;}
+  .pill-btn{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.75);border:1.5px solid rgba(255,255,255,0.13);border-radius:50px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.18s;font-family:'Inter',sans-serif;letter-spacing:0.02em;}
+  .pill-btn:hover{border-color:rgba(245,184,0,0.5);color:var(--gold);}
+  .pill-btn.active{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+  .divider-dot{color:rgba(255,255,255,0.15);font-size:18px;align-self:center;}
+  .active-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+  .filter-chip{background:rgba(245,184,0,0.15);border:1px solid rgba(245,184,0,0.4);border-radius:50px;padding:3px 10px 3px 12px;font-size:12px;color:var(--gold);font-weight:600;display:flex;align-items:center;gap:6px;}
+  .filter-chip button{background:none;border:none;color:var(--gold);cursor:pointer;font-size:13px;padding:0;line-height:1;}
+  .clear-all-btn{background:none;border:none;color:rgba(255,255,255,0.3);font-size:12px;font-family:'Inter',sans-serif;cursor:pointer;padding:3px 8px;text-decoration:underline;}
+  .clear-all-btn:hover{color:rgba(255,255,255,0.7);}
+
+  /* MAIN */
+  main{max-width:1200px;margin:20px auto 60px;padding:0 24px;}
+  .group-section{margin-bottom:32px;}
+  .group-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .group-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gold);}
+  .group-line{flex:1;height:2px;background:linear-gradient(to right,rgba(245,184,0,0.4),transparent);border-radius:2px;}
+  .group-count{font-size:11px;font-weight:700;color:var(--navy);background:var(--gold);border-radius:50px;padding:2px 9px;}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;}
+
+  /* CARD */
+  .award-card{background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:16px 14px 38px;cursor:pointer;transition:all 0.22s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden;}
+  .award-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.2s;}
+  .award-card:hover{background:rgba(245,184,0,0.1);border-color:rgba(245,184,0,0.5);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.3);}
+  .award-card:hover::before{transform:scaleX(1);}
+  .award-card:focus{outline:3px solid var(--gold);outline-offset:2px;}
+  .award-card.bookmarked{border-color:rgba(245,184,0,0.4);}
+  .award-card.bookmarked::before{transform:scaleX(1);}
+  .card-top-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+  .card-name{font-size:13px;font-weight:700;line-height:1.3;color:var(--white);flex:1;padding-right:6px;}
+  .bookmark-btn{background:none;border:none;cursor:pointer;font-size:18px;color:rgba(255,255,255,0.25);transition:all 0.18s;flex-shrink:0;padding:0;line-height:1;}
+  .bookmark-btn:hover{color:var(--gold);transform:scale(1.2);}
+  .bookmark-btn.active{color:var(--gold);}
+  .badge-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px;align-items:center;}
+  .card-deadline-badge{display:inline-block;font-size:10px;font-weight:700;color:var(--navy);background:var(--gold);border-radius:50px;padding:2px 8px;letter-spacing:0.04em;}
+  .card-unsupported-badge{display:inline-block;font-size:10px;font-weight:700;color:#fca5a5;background:rgba(239,68,68,0.2);border:1px solid rgba(239,68,68,0.4);border-radius:50px;padding:2px 8px;letter-spacing:0.04em;}
+  .card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
+  .card-tag{font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.65);}
+  .card-arrow{position:absolute;bottom:10px;right:12px;font-size:15px;color:rgba(245,184,0,0.35);transition:all 0.2s;}
+  .award-card:hover .card-arrow{color:var(--gold);transform:translateX(3px);}
+
+  /* EMPTY */
+  .empty-state{text-align:center;padding:60px 20px;color:rgba(255,255,255,0.3);}
+  .empty-state p{font-size:16px;margin-bottom:8px;}
+  .fav-panel-empty{text-align:center;padding:50px 20px;color:rgba(255,255,255,0.3);}
+  .fav-big{font-size:48px;margin-bottom:12px;}
+
+  /* DETAIL OVERLAY */
+  .overlay{display:none;position:fixed;inset:0;background:rgba(10,18,50,0.88);z-index:200;overflow-y:auto;padding:24px 16px;backdrop-filter:blur(4px);}
+  .overlay.open{display:flex;align-items:flex-start;justify-content:center;}
+  .detail-panel{background:var(--navy-dark);border:2px solid var(--gold);border-radius:20px;max-width:720px;width:100%;margin:auto;overflow:hidden;animation:slideUp 0.28s cubic-bezier(0.34,1.56,0.64,1);}
+  @keyframes slideUp{from{opacity:0;transform:translateY(40px) scale(0.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+  .detail-header{background:var(--gold);padding:22px 28px 18px;position:relative;}
+  .detail-header-meta{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;}
+  .detail-deadline-pill{font-size:11px;font-weight:800;background:var(--navy);color:var(--gold);border-radius:50px;padding:3px 12px;letter-spacing:0.06em;text-transform:uppercase;}
+  .detail-level-pill{font-size:11px;font-weight:700;background:rgba(0,0,0,0.18);color:var(--navy);border-radius:50px;padding:3px 10px;}
+  .detail-title{font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--navy);line-height:1.1;padding-right:80px;}
+  .not-advising-banner{margin-top:10px;background:rgba(0,0,0,0.14);border-left:4px solid var(--red);border-radius:6px;padding:8px 12px;font-size:12px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px;}
+  .detail-header-btns{position:absolute;top:14px;right:14px;display:flex;gap:6px;}
+  .icon-btn{background:rgba(0,0,0,0.15);color:var(--navy);border:none;border-radius:50%;width:32px;height:32px;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700;transition:all 0.18s;}
+  .icon-btn:hover{background:rgba(0,0,0,0.3);}
+  .icon-btn.fav-active{background:var(--navy);color:var(--gold);}
+  .detail-description{padding:16px 28px 0;font-size:14px;line-height:1.65;color:rgba(255,255,255,0.82);}
+  .detail-body{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:18px 28px 22px;}
+  .detail-col h3{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:9px;padding-bottom:5px;border-bottom:2px solid rgba(245,184,0,0.22);}
+  .detail-col:first-child{padding-right:14px;border-right:1px solid rgba(255,255,255,0.07);}
+  .detail-col:last-child{padding-left:14px;}
+  .detail-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+  .detail-list li{font-size:13px;line-height:1.45;color:rgba(255,255,255,0.82);display:flex;gap:7px;align-items:flex-start;}
+  .detail-list li::before{content:'\\2736';color:var(--gold);font-size:9px;flex-shrink:0;margin-top:3px;}
+  .detail-list.checks li::before{content:'\\2713';color:#4ade80;font-size:11px;font-weight:800;}
+  .detail-footer{background:rgba(0,0,0,0.2);padding:14px 28px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:space-between;}
+  .detail-footer-left{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,0.45);}
+  .detail-footer-tag{background:rgba(255,255,255,0.07);border-radius:4px;padding:2px 8px;font-weight:600;color:rgba(255,255,255,0.55);}
+  .visit-btn{background:var(--gold);color:var(--navy);border:none;border-radius:50px;padding:8px 18px;font-size:12px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all 0.18s;white-space:nowrap;flex-shrink:0;}
+  .visit-btn:hover{background:var(--gold-dark);transform:scale(1.03);}
+  .visit-btn.no-link{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.35);cursor:default;pointer-events:none;}
+
+  /* INFO PAGES — Award Journey + Our Office */
+  .info-page{max-width:860px;margin:32px auto 60px;padding:0 24px;}
+  .info-page-title{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:800;color:var(--gold);text-align:center;margin-bottom:28px;text-transform:uppercase;letter-spacing:0.04em;}
+  .info-card{background:var(--navy-dark);border:2px solid rgba(255,255,255,0.1);border-radius:18px;padding:24px 28px;margin-bottom:18px;}
+  .info-card-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .timeline-tag{display:inline-block;background:var(--gold);color:var(--navy);border-radius:50px;padding:3px 12px;font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-left:auto;}
+  .info-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .info-list li{font-size:14px;line-height:1.6;color:rgba(255,255,255,0.85);display:flex;gap:10px;align-items:flex-start;}
+  .info-list li::before{content:'\\25B6';color:var(--gold);font-size:10px;flex-shrink:0;margin-top:4px;}
+  .info-tip{background:rgba(245,184,0,0.12);border:1px solid rgba(245,184,0,0.3);border-radius:10px;padding:12px 16px;margin-top:14px;font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;}
+  .info-tip strong{color:var(--gold);}
+  .info-two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;}
+  .info-col-card{background:var(--navy-dark);border:2px solid rgba(255,255,255,0.1);border-radius:18px;padding:22px 24px;}
+  .info-col-card.do-card{border-color:rgba(245,184,0,0.3);}
+  .info-col-card.dont-card{border-color:rgba(239,68,68,0.25);}
+  .info-col-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;}
+  .info-col-card.do-card .info-col-title{color:var(--gold);}
+  .info-col-card.dont-card .info-col-title{color:#fca5a5;}
+  .dont-list li::before{content:'\\00D7';color:#f87171 !important;font-size:13px !important;font-weight:800;}
+  .step-num{width:36px;height:36px;background:var(--gold);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0;}
+  .contact-strip{background:var(--gold);border-radius:14px;padding:16px 22px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:8px;}
+  .contact-item{display:flex;align-items:center;gap:8px;color:var(--navy);font-weight:700;font-size:14px;text-decoration:none;}
+  .contact-item:hover{text-decoration:underline;}
+
+  @media(max-width:640px){
+    header{padding:12px 16px;gap:12px;}
+    .header-logo{width:44px;height:44px;font-size:24px;}
+    .header-text .office-line{font-size:15px;}
+    .nav-strip{padding:0 12px;}
+    .controls-wrap{padding:14px 14px 0;}
+    main{padding:0 14px;}
+    .detail-title{font-size:22px;padding-right:70px;}
+    .detail-header{padding:16px 16px 14px;}
+    .detail-description,.detail-footer{padding-left:16px;padding-right:16px;}
+    .detail-body{padding:14px 16px 20px;}
+    .info-two-col{grid-template-columns:1fr;}
+    .info-page{padding:0 14px;}
+  }
+  @media(max-width:540px){
+    .detail-body{grid-template-columns:1fr;}
+    .detail-col:first-child{padding-right:0;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;}
+    .detail-col:last-child{padding-left:0;padding-top:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">&#x1F985;</div>
+  <div class="header-text">
+    <div class="office-line">Office of Nationally Competitive Awards and Scholar Development</div>
+    <div class="scholar-line">Embry&#8209;Riddle Aeronautical University</div>
+  </div>
+  <div class="header-right">
+    <button class="fav-counter" id="fav-header-btn" title="View saved awards">
+      &#x2B50; <span id="fav-count">0</span> Saved
+    </button>
+  </div>
+</header>
+
+<div class="nav-strip">
+  <button class="nav-tab active" data-view="browse">Browse Awards</button>
+  <button class="nav-tab" data-view="favorites">&#x2B50; My Saved Awards</button>
+  <button class="nav-tab" data-view="journey">Award Journey</button>
+  <button class="nav-tab" data-view="office">Our Office</button>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     BROWSE VIEW
+════════════════════════════════════════════════ -->
+<div id="view-browse">
+  <div class="controls-wrap">
+    <div class="search-row">
+      <div class="search-box">
+        <span class="search-icon">&#x1F50D;</span>
+        <input type="text" id="search-input" placeholder="Search awards, topics, benefits&#x2026;" autocomplete="off">
+        <button class="search-clear" id="search-clear">&#x2715;</button>
+      </div>
+      <span class="result-count" id="result-count"></span>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">Sort:</span>
+      <button class="pill-btn active" data-sort="deadline">Deadline</button>
+      <button class="pill-btn" data-sort="topic">Topic</button>
+      <button class="pill-btn" data-sort="level">Level</button>
+      <button class="pill-btn" data-sort="alpha">A&#x2013;Z</button>
+      <span class="divider-dot">&#xB7;</span>
+      <span class="filter-label">Level:</span>
+      <button class="pill-btn" data-level="Undergraduate">Undergrad</button>
+      <button class="pill-btn" data-level="Graduate">Graduate</button>
+      <button class="pill-btn" data-level="Ph.D.">Ph.D.</button>
+    </div>
+    <div class="filter-row" style="margin-top:0;">
+      <span class="filter-label">Topic:</span>
+      <button class="pill-btn" data-topic="STEM">STEM</button>
+      <button class="pill-btn" data-topic="Aerospace">Aerospace</button>
+      <button class="pill-btn" data-topic="Research">Research</button>
+      <button class="pill-btn" data-topic="Internship">Internship</button>
+      <button class="pill-btn" data-topic="Graduate Funding">Graduate Funding</button>
+      <button class="pill-btn" data-topic="Leadership">Leadership</button>
+      <button class="pill-btn" data-topic="Foreign Service">Foreign Service</button>
+      <button class="pill-btn" data-topic="Study Abroad">Study Abroad</button>
+      <button class="pill-btn" data-topic="National Security">Nat&#39;l Security</button>
+      <button class="pill-btn" data-topic="Public Service">Public Service</button>
+      <button class="pill-btn" data-topic="Language">Language</button>
+      <button class="pill-btn" data-topic="Military">Military</button>
+    </div>
+    <div class="active-filters" id="active-filters"></div>
+  </div>
+  <main id="main-content"></main>
+        <div style="text-align:center;">
+        <div class="contact-strip" style="display:inline-block;">
+            <a class="contact-item" href="mailto:uaawards@erau.edu">
+                &#x2709;&#xFE0F;&nbsp; Questions? Contact us at uaawards@erau.edu
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     SAVED AWARDS VIEW
+════════════════════════════════════════════════ -->
+<div id="view-favorites" style="display:none;">
+  <div class="controls-wrap" style="padding-bottom:16px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+      <span style="font-size:13px;color:rgba(255,255,255,0.45);">Click &#x2B50; on any award to save it here.</span>
+      <button class="pill-btn" id="clear-favs-btn">Clear all saved</button>
+    </div>
+  </div>
+  <main id="fav-content"></main>
+    <div style="text-align:center;">
+        <div class="contact-strip" style="display:inline-block;">
+            <a class="contact-item" href="mailto:uaawards@erau.edu">
+                &#x2709;&#xFE0F;&nbsp; Questions? Contact us at uaawards@erau.edu
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     AWARD JOURNEY VIEW
+════════════════════════════════════════════════ -->
+<div id="view-journey" style="display:none;">
+  <div class="info-page">
+    <div class="info-page-title">Award Journey</div>
+
+    <div class="info-card">
+      <div class="info-card-title">
+        &#x1F50D; Discovery
+        <span class="timeline-tag">1&#x2013;3 years before application</span>
+      </div>
+      <ul class="info-list">
+        <li>Define your career goal by considering what you want to achieve and the impact you hope to make in your field</li>
+        <li>Plan your academic journey by considering what steps you need to take to reach your career goal</li>
+        <li>Explore awards that support your goals, even if you are not eligible yet</li>
+      </ul>
+      <div class="info-tip">
+        <strong>&#x1F4A1; Pro Tip!</strong>&nbsp;
+        In your application, be as specific about your career goal and the impact you want to make. Clear and precise goals make for a winning essay.
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">
+        &#x2699;&#xFE0F; Development
+        <span class="timeline-tag">3&#x2013;12 months before application</span>
+      </div>
+      <ul class="info-list">
+        <li>Learn about what makes a strong applicant by reviewing award criteria, past recipients, and selection priorities</li>
+        <li>Build your profile by developing the skills, experiences, and leadership qualities that align with the award&#x2019;s goals</li>
+        <li>Seek mentorship, feedback, and opportunities to grow in areas that strengthen your future application</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">
+        &#x1F4CB; Application
+        <span class="timeline-tag">During application</span>
+    </div>
+      <ul class="info-list">
+        <li>Make a detailed application plan with deadlines for writing essays and requesting letters of recommendation</li>
+        <li>Tell your story clearly by connecting your experiences, goals, and impact to the award&#x2019;s mission</li>
+        <li>Seek feedback from our office, as well as from mentors, advisors, and peers to make your application as strong as possible</li>
+      </ul>
+      <div class="info-tip">
+        <strong>&#x1F4A1; Pro Tip!</strong>&nbsp;
+        Start your application early. Strong applications take time to craft and benefit from several rounds of feedback and revision.
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+        <div class="contact-strip" style="display:inline-block;">
+            <a class="contact-item" href="mailto:uaawards@erau.edu">
+                &#x2709;&#xFE0F;&nbsp; Questions? Contact us at uaawards@erau.edu
+            </a>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     OUR OFFICE VIEW
+════════════════════════════════════════════════ -->
+<div id="view-office" style="display:none;">
+  <div class="info-page">
+    <div class="info-page-title">Our Office</div>
+
+    <div class="info-two-col">
+      <div class="info-col-card do-card">
+        <div class="info-col-title">✓ What We Do</div>
+        <ul class="info-list">
+          <li>Provide assistance for supported awards</li>
+          <li>Review your applications in person and asynchronously</li>
+          <li>Clarify your academic and professional goals</li>
+          <li>Host scholar development workshops</li>
+        </ul>
+      </div>
+      <div class="info-col-card dont-card">
+        <div class="info-col-title">✕ What We Don&#x2019;t Do</div>
+        <ul class="info-list dont-list">
+          <li>We are <strong>not financial aid</strong></li>
+          <li>Support awards outside of our listed awards</li>
+          <li>Resume review or interview practice (unless it&#x2019;s for one of our awards)</li>
+          <li>Review essays with students who have not opted into an award</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">3 Ways to Work With Us</div>
+      <div style="display:flex;flex-direction:column;gap:18px;">
+
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div class="step-num">1</div>
+          <div>
+            <div style="font-weight:700;color:var(--gold);font-size:15px;margin-bottom:5px;">One-on-one Mentorship</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.65;">
+              Opt into our one-on-one mentorship program for award applications using our opt-in forms, found on
+              ERNIE &#x2192; Departments &#x2192; Nationally Competitive Awards. 
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:5px;font-style:italic;">
+              Note: To receive assistance on an award, you must opt-in.
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div class="step-num">2</div>
+          <div>
+            <div style="font-weight:700;color:var(--gold);font-size:15px;margin-bottom:5px;">Interest Meetings</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.65;">
+              In the <strong style="color:var(--white);">spring semester</strong>, book an interest meeting with a peer mentor
+              to explore the awards we support and create an application plan.
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div class="step-num">3</div>
+          <div>
+            <div style="font-weight:700;color:var(--gold);font-size:15px;margin-bottom:5px;">Professional Development Workshops &amp; Award Presentations</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.65;">
+              Attend either one of our professional development workshops or in-depth award presentations,
+              during <strong style="color:var(--white);">spring semester only</strong>.
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="info-card">
+        <div class="info-card-title">Opt-in mentorship process</div>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+            <!-- add peer mentor process here -->
+
+        </div>
+    </div>
+
+
+    </div>
+      <div style="text-align:center;">
+        <div class="contact-strip" style="display:inline-block;">
+            <a class="contact-item" href="mailto:uaawards@erau.edu">
+                &#x2709;&#xFE0F;&nbsp; Questions? Contact us at uaawards@erau.edu
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     DETAIL OVERLAY
+════════════════════════════════════════════════ -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="detail-title-text">
+  <div class="detail-panel">
+    <div class="detail-header">
+      <div class="detail-header-meta">
+        <span class="detail-deadline-pill" id="dp-deadline"></span>
+        <span class="detail-level-pill" id="dp-level"></span>
+      </div>
+      <div class="detail-title" id="detail-title-text"></div>
+      <div id="dp-not-advising" class="not-advising-banner" style="display:none;">
+        &#x26A0;&#xFE0F;&nbsp; We are currently not advising for this award.
+      </div>
+      <div class="detail-header-btns">
+        <button class="icon-btn" id="detail-fav-btn" title="Save award">&#x2B50;</button>
+        <button class="icon-btn" id="close-btn" aria-label="Close">&#x2715;</button>
+      </div>
+    </div>
+    <div class="detail-description" id="dp-desc"></div>
+    <div class="detail-body">
+      <div class="detail-col">
+        <h3>Benefits</h3>
+        <ul class="detail-list" id="dp-benefits"></ul>
+      </div>
+      <div class="detail-col">
+        <h3>Eligibility</h3>
+        <ul class="detail-list checks" id="dp-eligibility"></ul>
+      </div>
+    </div>
+    <div class="detail-footer">
+      <div class="detail-footer-left" id="dp-footer-tags"></div>
+      <a class="visit-btn" id="dp-website-btn" href="#" target="_blank" rel="noopener">
+        &#x1F310; Visit Website
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+
+// ════════════════════════════════════════════════════════════════
+// AWARDS DATA
+// ════════════════════════════════════════════════════════════════
+
+const AWARDS = [
+  {
+    id: 1,
+    name: "20 Twenties",
+    deadline: "June 1",
+    topics: ["Aerospace", "STEM"],
+    levels: ["Undergraduate", "Master's"],
+    supported: true,
+    website: "https://20twenties.aviationweek.com/",
+    description: "Awarded to talented individuals who are on course to change the face of the aerospace and defense industry in their 20s. Honorees are recognized by Aviation Week Network and invited to an awards luncheon in Washington, D.C.",
+    benefits: [
+      "Recognition in Aviation Week & Space Technology magazine",
+      "Trip to D.C. to attend the 20 Twenties Awards Luncheon and Aviation Week Network's Laureate Awards Dinner",
+      "Complimentary digital subscription to Aviation Week & Space Technology for all nominees and their nominators"
+    ],
+    eligibility: [
+      "In your twenties",
+      "Enrolled in a part or full-time STEM program",
+      "Undergrad or master's student",
+      "Nominated by faculty member or Dean"
+    ]
+  },
+  {
+    id: 2,
+    name: "Amelia Earhart Fellowship",
+    deadline: "August 1",
+    topics: ["Aerospace", "STEM", "Graduate Funding"],
+    levels: ["Ph.D."],
+    supported: true,
+    website: "https://www.zonta.org/Web/Web/Programs/Education/Amelia_Earhart_Fellowship.aspx",
+    description: "Fellowship aims to empower women through encouragement and financial support of women pursuing Ph.D./doctoral degrees in aerospace engineering or space sciences.",
+    benefits: [
+      "$10,000 fellowship",
+      "Can be used at any accredited university offering aerospace related doctoral programs",
+      "Recognition as part of a prestigious network of women in aerospace"
+    ],
+    eligibility: [
+      "Open to women of any nationality",
+      "Pursuing a full-time Ph.D./doctoral degree in aerospace engineering or space sciences",
+      "Completed at least one year of Ph.D. program or hold a master's degree in an aerospace field",
+      "Have a strong academic record and be conducting research in an aerospace-related field",
+      "Must not graduate before 2026"
+    ]
+  },
+  {
+    id: 3,
+    name: "Amgen Scholars Program",
+    deadline: "December 1",
+    topics: ["STEM", "Research", "Internship"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://amgenscholars.com/",
+    description: "An opportunity to engage in a hands-on research experience during the summer at many of the world's leading educational institutions such as Cal Tech, Stanford, and Yale.",
+    benefits: [
+      "Full-time, hands-on research experience under faculty mentorship",
+      "Opportunities to analyze data, present results, and collaborate with research staff",
+      "Networking with peers and professionals in science and engineering",
+      "A multi-day symposium in California with travel, room, and board fully covered",
+      "Financial support (varies by host institution)"
+    ],
+    eligibility: [
+      "U.S. citizen or permanent resident",
+      "Sophomore, junior, or non-graduating senior",
+      "GPA of 3.2 or higher",
+      "Interested in pursuing a Ph.D. or M.D.-Ph.D.",
+      "Must not have previously participated in the Amgen Scholars Program"
+    ]
+  },
+  {
+    id: 4,
+    name: "Astronaut Scholarship",
+    deadline: "December 1",
+    topics: ["STEM", "Research", "Leadership"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://www.astronautscholarship.org/",
+    description: "Scholarship for students pursuing a STEM degree who show initiative, creativity, and excellence in their chosen field. Embry-Riddle can nominate up to two students each year.",
+    benefits: [
+      "$15,000 scholarship",
+      "Paid trip to ASF's Innovators Weekend",
+      "Mentorship from a leading executive mentor",
+      "Networking with successful entrepreneurs, venture capitalists, and industry leaders",
+      "Invitations to the U.S. Astronaut Hall of Fame Gala, Innovators Week & Gala, and Space Rendezvous",
+      "Lifelong engagement with astronauts and the Astronaut Scholarship Foundation"
+    ],
+    eligibility: [
+      "U.S. citizen",
+      "Sophomore or Junior",
+      "Full-time undergraduate student",
+      "Majoring in a STEM field",
+      "Completed 2 years of full-time study at ERAU",
+      "Intend to pursue research or advance their field after graduation",
+      "Nominated by an ERAU faculty mentor"
+    ]
+  },
+  {
+    id: 6,
+    name: "Boren Awards",
+    deadline: "October 1",
+    topics: ["National Security", "Language", "Study Abroad"],
+    levels: ["Undergraduate", "Graduate"],
+    supported: true,
+    website: "https://www.borenawards.org/",
+    description: "Funding for U.S. undergraduate and graduate students to add an international and language component to their education. Focus on geographic areas critical to U.S. interests. Western Europe, Canada, Australia, and New Zealand are excluded.",
+    benefits: [
+      "8-11 weeks: $8,000 for a summer program (STEM majors only)",
+      "12-24 weeks: $12,500",
+      "25-52 weeks: $25,000",
+      "Preference given to programs with intensive language study in preferred locations"
+    ],
+    eligibility: [
+      "U.S. citizen",
+      "Must be at least 18 years old by application deadline",
+      "Must be a high school graduate",
+      "Must plan to study outside of Western Europe, Canada, Australia, or New Zealand",
+      "Must not be a citizen of the country where they plan to study",
+      "Must be inactive, non-drilling status during the Boren-funded program"
+    ]
+  },
+  {
+    id: 7,
+    name: "Brooke Owens Fellowship",
+    deadline: "August 1",
+    topics: ["Aerospace", "Internship"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://www.brookeowensfellowship.org/",
+    description: "Paid summer internships and executive mentorship for exceptional undergraduate women and gender-minority students in aerospace.",
+    benefits: [
+      "Paid internship at a leading aerospace company for ~12 weeks",
+      "Paired with an Executive Mentor and a Brookie Alumni",
+      "Exclusive access to the Fellowship Summit with industry leaders, astronauts, CEOs, and policymakers",
+      "Lifetime membership in the Brooke Owens Fellowship network"
+    ],
+    eligibility: [
+      "Pursuing bachelor's degree",
+      "Completed at least one semester",
+      "Interested in pursuing a career in aerospace",
+      "Woman or a gender minority"
+    ]
+  },
+  {
+    id: 9,
+    name: "Clarke Diplomatic Security Fellowship",
+    deadline: "December 1",
+    topics: ["Foreign Service", "National Security", "Graduate Funding"],
+    levels: ["Graduate"],
+    supported: true,
+    website: "https://clarkedsfellowship.org/",
+    description: "Funds graduate students (up to age 33) pursuing a master's degree and career as a Diplomatic Security Service Special Agent in the Foreign Service.",
+    benefits: [
+      "Up to $24,000 per year for tuition during the two-year master's program",
+      "Up to $18,000 per year for room, board, books, fees, and travel",
+      "Two fully funded summer practicums",
+      "Stipends, housing, and travel allowances for both practicums",
+      "Guaranteed appointment as a DSS Special Agent upon completion"
+    ],
+    eligibility: [
+      "U.S. citizen",
+      "19-32 years old at the time of application",
+      "Plan to begin a two-year, full-time master's program at a U.S.-based accredited institution starting in fall",
+      "GPA of 3.2 or higher"
+    ]
+  },
+  {
+    id: 10,
+    name: "Computational Science Graduate Fellowship",
+    deadline: "October 1",
+    topics: ["STEM", "Graduate Funding"],
+    levels: ["Ph.D."],
+    supported: true,
+    website: "https://www.krellinst.org/csgf/",
+    description: "Four-year fellowship for students pursuing doctoral degrees in fields that use high-performance computing to solve complex science and engineering problems.",
+    benefits: [
+      "$45,000 yearly stipend",
+      "Full tuition and required fees paid at any accredited U.S. university",
+      "$1,000 annual professional development allowance",
+      "Up to four years of funding, subject to renewal",
+      "Twelve-week practicum at one of 21 DOE national labs with access to DOE supercomputers"
+    ],
+    eligibility: [
+      "Undergraduate seniors or master's students applying to Ph.D. programs, or first year Ph.D. students",
+      "Must enroll as a full-time Ph.D. student at an accredited U.S. institution starting in the fall",
+      "Research must align with DOE interests",
+      "Must spend summers conducting full-time research, taking classes, or on a practicum assignment"
+    ]
+  },
+  {
+    id: 11,
+    name: "Congress-Bundestag Youth Exchange (CBYX)",
+    deadline: "August 1",
+    topics: ["Study Abroad"],
+    levels: ["Undergraduate", "Recent Graduate"],
+    supported: true,
+    website: "https://usagermanyscholarship.org/",
+    description: "Provides funding for undergraduate students or alumni (up to age 24) to spend one year studying or working in Germany.",
+    benefits: [
+      "Round-trip airfare from Washington, D.C. to Germany",
+      "A 12-month immersive experience in Germany",
+      "Housing with a German host family",
+      "Monthly stipend to cover living expenses",
+      "Health insurance while in Germany",
+      "Hands-on experience in their career field"
+    ],
+    eligibility: [
+      "U.S. citizen",
+      "18.5-24 years old on August 1 of the program start year",
+      "Strong interest in Germany and world affairs",
+      "Clear career goals and relevant experience",
+      "Willing to serve as young ambassadors of the U.S. in Germany"
+    ]
+  },
+  {
+    id: 12,
+    name: "Critical Language Scholarship Abroad Program",
+    deadline: "October 1",
+    topics: ["Language", "Study Abroad"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://clscholarship.org/",
+    description: "An intensive overseas summer language and cultural immersion program. Students spend 8-10 weeks studying one of 15 critical languages.",
+    benefits: [
+      "Intensive language instruction and cultural programming",
+      "Language proficiency testing using the ACTFL Oral Proficiency Interview",
+      "Academic credit issued by Bryn Mawr College",
+      "Non-competitive eligibility for U.S. government employment",
+      "Round trip travel funded, visa fees covered, room and board covered"
+    ],
+    eligibility: [
+      "U.S. citizen or national",
+      "18 by May 15 of the application year",
+      "Undergraduate",
+      "Enrolled in at least one credit-bearing class in a U.S. institution in fall of application year",
+      "Must complete at least one full year of undergraduate study by start of summer",
+      "Must meet language prerequisites for specific CLS language program"
+    ]
+  },
+  {
+    id: 13,
+    name: "DAAD Rise Internships",
+    deadline: "October 1",
+    topics: ["STEM", "Research", "Study Abroad", "Internship"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://www.daad.de/rise/en/",
+    description: "Provides funding for students to intern and conduct research in a STEM field at a German institution.",
+    benefits: [
+      "Monthly scholarship of EUR 992 to cover living expenses",
+      "Health, accident, and personal liability insurance provided by DAAD",
+      "International travel subsidy covering round-trip airfare to and from Germany",
+      "Invitation to the RISE Germany three-day meeting in Heidelberg plus EUR 160 travel allowance"
+    ],
+    eligibility: [
+      "Must be enrolled in a STEM field",
+      "Must have completed at least two years of their undergraduate degree by the time the internship begins",
+      "Must have studied at their current U.S., Canadian, British, or Irish institution for more than 12 months",
+      "Must begin the internship between May 15 and July 15; internship must last between 10 weeks and 90 days"
+    ]
+  },
+  {
+    id: 14,
+    name: "Ellison Scholars Programme",
+    deadline: "June 1",
+    topics: ["STEM", "Graduate Funding", "Research"],
+    levels: ["Ph.D."],
+    supported: true,
+    website: "https://eit.org/education-and-scholarships/undergraduate",
+    description: "Program offered by the Ellison Institute of Technology (EIT) in partnership with the University of Oxford. Recipients receive a fully funded scholarship to Oxford to pursue a Ph.D.",
+    benefits: [
+      "Full tuition to Oxford",
+      "Living stipend covering housing, travel, and daily expenses",
+      "Paid internship-style research through Ellison Institute of Technology projects",
+      "Mentorship and networking with world-leading scientists"
+    ],
+    eligibility: [
+      "Be accepted to a relevant Ph.D. program at Oxford",
+      "Meet the selection criteria (scholars must demonstrate excellence, tenacity, integrity, etc.)"
+    ]
+  },
+  {
+    id: 15,
+    name: "Ernest F. Hollings Scholarship",
+    deadline: "October 1",
+    topics: ["Research", "STEM", "Internship"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://www.noaa.gov/office-education/hollings-scholarship",
+    description: "Students studying NOAA-related fields receive a two-year scholarship and a 10-week paid full-time summer internship at a NOAA or partner facility.",
+    benefits: [
+      "Up to $9,500 per year for two years of full-time undergraduate study",
+      "10-week, full-time paid internship at a NOAA or partner facility ($700/week)",
+      "$400/week housing allowance if not living at home during the internship",
+      "Round-trip travel and reimbursement for incidentals",
+      "Funding for up to two professional conferences to present research results"
+    ],
+    eligibility: [
+      "U.S. citizen",
+      "A 2nd-year student in a 4-year program or 3rd-year student in a 5-year program",
+      "Maintain full-time enrollment throughout the award period",
+      "Minimum 3.0 GPA on a 4.0 scale",
+      "Declared major in a field that supports NOAA's mission"
+    ]
+  },
+  {
+    id: 16,
+    name: "Foreign Affairs Information Technology Fellowship",
+    deadline: "October 1",
+    topics: ["Foreign Service", "National Security", "Internship"],
+    levels: ["Undergraduate", "Graduate"],
+    supported: true,
+    website: "https://www.faitfellowship.org/",
+    description: "A two-year fellowship for those pursuing an IT-related degree interested in using technology for diplomacy, culminating in an appointment as an Information Management Specialist.",
+    benefits: [
+      "Up to $43,500 per year for 2 years to cover tuition, room and board, books, fees, and some travel",
+      "2 fully funded summer internships: domestic at U.S. Department of State and overseas at a U.S. Embassy or Consulate",
+      "Stipends, housing, and travel allowances for both internships",
+      "Personalized mentoring and professional development",
+      "Appointment as a Diplomatic Technology Officer (DTO) in the Foreign Service after successful completion"
+    ],
+    eligibility: [
+      "U.S. citizen",
+      "Enrolled in an IT-related program",
+      "GPA of 3.2 or higher on a 4.0 scale",
+      "Must graduate after completing four full-time semesters after award is received",
+      "Must agree to a 5-year service commitment as a Diplomatic Technology Officer",
+      "Must be able to obtain and maintain a Top Secret security clearance"
+    ]
+  },
+  {
+    id: 17,
+    name: "Fulbright U.S. Student Program",
+    deadline: "June 1",
+    topics: ["Study Abroad", "Research", "Teaching"],
+    levels: ["Post-Baccalaureate", "Graduate"],
+    supported: true,
+    website: "https://us.fulbrightonline.org/",
+    description: "Awardees spend their post-bachelor's or graduate year abroad, studying, performing research, or serving as an English language teaching assistant.",
+    benefits: [
+      "Monthly stipend based on host country cost of living",
+      "Round trip airfare to host country",
+      "Full or partial tuition",
+      "Accident and sickness health coverage",
+      "24/7 support for emergencies",
+      "12 months of non-competitive eligibility for federal jobs after grant completion"
+    ],
+    eligibility: [
+      "U.S. citizen or national",
+      "Conferred bachelor's degree or equivalent before the start of the grant period",
+      "Must meet language requirements of specific award",
+      "Must not have lived or studied in the host country for more than six months"
+    ]
+  },
+  {
+    id: 18,
+    name: "Fulbright U.K. Summer Institute",
+    deadline: "December 1",
+    topics: ["Study Abroad"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://us.fulbrightonline.org/countries/europe-and-eurasia/united-kingdom",
+    description: "The U.S.-U.K. Fulbright Commission offers 3-4 week academic and cultural summer programs for U.S. citizens to come to the U.K. Ideal for students with little to no study/travel experience outside of North America.",
+    benefits: [
+      "Round-trip airfare to the U.K.",
+      "Airport transfer to accommodations",
+      "Full tuition and fees at the host university",
+      "Housing and meal allowance",
+      "Social and cultural events and excursions"
+    ],
+    eligibility: [
+      "U.S. citizen",
+      "Hold a valid U.S. Passport",
+      "At least 18 years old by the start of the program",
+      "GPA of 3.6 or higher",
+      "Completed no more than 2 years of undergraduate study; have 2 years remaining after the program ends",
+      "No or limited experience traveling/studying outside of North America",
+      "Able to attend the entire program"
+    ]
+  },
+  {
+    id: 19,
+    name: "Gates Cambridge Scholarship",
+    deadline: "June 1",
+    topics: ["Graduate Funding", "Research", "Leadership"],
+    levels: ["Ph.D.", "Master's", "Graduate"],
+    supported: true,
+    website: "https://www.gatescambridge.org/programme/the-scholarship/",
+    description: "Funding to pursue a full-time postgraduate degree in any subject at the University of Cambridge. Awarded based on intellectual ability, leadership capacity, and commitment to improving the lives of others.",
+    benefits: [
+      "Full tuition",
+      "Allowance of GBP 21,000 for 12 months",
+      "Round-trip airfare to Cambridge",
+      "Covers visa costs and immigration health surcharge",
+      "Academic development funding of GBP 500-2,000 to attend conferences and courses"
+    ],
+    eligibility: [
+      "Citizen of any country outside the U.K.",
+      "Applying to pursue a Ph.D., MLit, or a one-year postgraduate course at the University of Cambridge",
+      "Must apply to the University of Cambridge and be accepted to receive the scholarship"
+    ]
+  },
+  {
+    id: 21,
+    name: "Gilman International Scholarship",
+    deadline: "August 1 & December 1",
+    topics: ["Study Abroad"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://www.gilmanscholarship.org/",
+    description: "Scholarships for Pell Grant eligible undergraduates to study or intern abroad. Encourages non-traditional study abroad destinations and applications from underrepresented students.",
+    benefits: [
+      "Scholarship of up to $5,000 to help cover tuition, housing, etc.",
+      "Supplemental funding: $8,000 for critical need language students, $6,000 for STEM-related research students",
+      "Overseas internship at a U.S. Embassy or Consulate",
+      "12 months non-competitive eligibility (NCE) for federal employment"
+    ],
+    eligibility: [
+      "U.S. citizen or national",
+      "Undergraduate",
+      "Receiving Title IV federal financial aid",
+      "Applying to or accepted into a credit-bearing study abroad or internship program",
+      "Study abroad location must have a U.S. Department of State Travel Advisory Level 1 or 2"
+    ]
+  },
+  {
+    id: 22,
+    name: "Gilman-McCain Scholarship",
+    deadline: "August 1 & December 1",
+    topics: ["Study Abroad", "Military"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://www.gilmanscholarship.org/program/gilman-mccain-scholarships/",
+    description: "Scholarships for undergraduate dependents of active duty U.S. military personnel to study or intern abroad.",
+    benefits: [
+      "$5,000 award to support the cost of a credit-bearing study abroad or international internship program",
+      "Opportunity to gain global experience, build career readiness skills, and develop an international perspective"
+    ],
+    eligibility: [
+      "U.S. citizen or national",
+      "Undergraduate",
+      "Child or spouse of active or activated U.S. military personnel",
+      "Receiving Title IV federal financial aid or provide proof of eligibility",
+      "Applying to or accepted into a credit-bearing study abroad or internship program",
+      "Study abroad location must have a U.S. Department of State Travel Advisory Level 1 or 2"
+    ]
+  },
+  {
+    id: 23,
+    name: "Goldwater Scholarship",
+    deadline: "October 1",
+    topics: ["STEM", "Research"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://goldwaterscholarship.gov/",
+    description: "The Goldwater Scholarship supports outstanding students interested in research careers in the natural sciences, mathematics, and engineering. Covers eligible expenses up to $7,500 per academic year for up to 2 years.",
+    benefits: [
+      "Up to $7,500 per year",
+      "Sophomore recipients may receive funding for up to 2 years",
+      "Junior recipients may receive funding for up to 1 year",
+      "Join the Goldwater Scholar Community"
+    ],
+    eligibility: [
+      "Must be a U.S. citizen, U.S. National, or permanent resident",
+      "Must be a currently or previously enrolled sophomore or junior",
+      "Must be a full-time student during scholarship fund semesters",
+      "Must plan to pursue a research career in natural science, mathematics, or engineering",
+      "Must have a GPA of 3.50 or higher"
+    ]
+  },
+  {
+    id: 24,
+    name: "Harry S. Truman Scholarship",
+    deadline: "October 1",
+    topics: ["Public Service", "Leadership"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://www.truman.gov/",
+    description: "Funding for graduate/professional school for students dedicated to becoming change agents through careers in public service. Scholars are selected based on leadership, commitment to service, and academic promise.",
+    benefits: [
+      "Up to $30,000 for graduate study related to public service",
+      "Access to exclusive leadership development programs",
+      "Mentoring, advising, and a strong professional public service network",
+      "Preferred hiring status for U.S. federal government jobs",
+      "Priority admission and financial support from select public service graduate programs"
+    ],
+    eligibility: [
+      "U.S. citizen or U.S. national",
+      "Must be in their second-to-last year of undergraduate study (4+ year program) or final year (3-year program)",
+      "Must be nominated by their current or former institution",
+      "Must plan to attend graduate school to pursue a career in public service",
+      "Must attend Truman Scholars Leadership Week if selected"
+    ]
+  },
+  {
+    id: 25,
+    name: "Hertz Fellowships",
+    deadline: "August 1",
+    topics: ["STEM", "Graduate Funding", "Research"],
+    levels: ["Ph.D."],
+    supported: true,
+    website: "https://www.hertzfoundation.org/hertz-fellowship/",
+    description: "Fellowships awarded to the nation's most promising graduate students in science and technology. Up to five years of funding for students pursuing a PhD in applied physical/biological sciences, mathematics, and engineering.",
+    benefits: [
+      "Up to $250,000 total fellowship support",
+      "Full tuition",
+      "$5,000/year additional stipend for dependent children",
+      "Renewable for up to 5 years",
+      "Option 1 (Hertz only): $38,000 personal stipend per 9-month academic year",
+      "Option 2 (coordinated with another fellowship): $44,000 personal stipend + $9,000/year supplemental"
+    ],
+    eligibility: [
+      "U.S. citizen or U.S. permanent resident",
+      "Senior, planning to apply to graduate school, or a first-year grad student",
+      "Must intend to pursue a PhD in applied physical sciences, biological sciences, mathematics, or engineering",
+      "Must make a nonbinding moral commitment to make their skills available to the U.S. during times of national emergency"
+    ]
+  },
+  {
+    id: 27,
+    name: "Knight-Hennessy Scholars",
+    deadline: "June 1",
+    topics: ["Graduate Funding", "Leadership"],
+    levels: ["Graduate"],
+    supported: true,
+    website: "https://knight-hennessy.stanford.edu/",
+    description: "Provides funding for graduate study at Stanford University in any discipline. Students must apply to Stanford for their program of interest and be accepted.",
+    benefits: [
+      "Up to 3 years of full funding",
+      "Living stipend",
+      "Annual round trip travel stipend",
+      "One-time relocation stipend",
+      "Project funding and mentorship for student-led initiatives",
+      "Access to the King Global Leadership Program"
+    ],
+    eligibility: [
+      "Apply and be accepted into a full-time Stanford graduate degree program",
+      "Must enroll in a program that begins in the same year they apply to Knight-Hennessy",
+      "Must have earned bachelor's degree"
+    ]
+  },
+  {
+    id: 30,
+    name: "National Defense Science and Engineering Graduate (NDSEG) Fellowship",
+    deadline: "August 1",
+    topics: ["STEM", "National Security", "Graduate Funding"],
+    levels: ["Ph.D."],
+    supported: true,
+    website: "https://ndseg.sysplus.com/",
+    description: "Fellowship awarded to U.S. citizens and nationals for doctoral studies in one of 18 supported STEM disciplines. Provides three years of full tuition, mandatory fees, a monthly stipend, and medical insurance.",
+    benefits: [
+      "Full tuition and mandatory fees",
+      "Annual stipend of $43,200 paid monthly",
+      "Up to $1,600/year for health insurance",
+      "Up to $5,000 total for travel",
+      "Financial support only provided during periods of approved academic study or research"
+    ],
+    eligibility: [
+      "U.S. citizen or national",
+      "Must have completed undergrad by start of fellowship",
+      "Must be applying to, accepted at, or currently enrolled in a U.S.-based accredited graduate program in science or engineering",
+      "Must have at least 3 years remaining in graduate degree program at the start of the fellowship",
+      "Must be conducting research aligned with DoD Broad Agency Announcements",
+      "Cannot receive simultaneous funding from another fellowship"
+    ]
+  },
+  {
+    id: 31,
+    name: "NSF Graduate Research Fellowship Program (GRFP)",
+    deadline: "August 1",
+    topics: ["STEM", "Research", "Graduate Funding"],
+    levels: ["Graduate"],
+    supported: true,
+    website: "https://www.nsfgrfp.org/",
+    description: "Fellowships recognize and support outstanding graduate students in NSF-supported STEM disciplines pursuing research-based master's and doctoral degrees. Strongly encourages applications from underrepresented populations.",
+    benefits: [
+      "$37,000 annual stipend (for 3 years)",
+      "$16,000 cost-of-education allowance",
+      "Three years of funding to be used over a five-year period",
+      "Access to professional development opportunities"
+    ],
+    eligibility: [
+      "U.S. citizen, national, or permanent residents",
+      "Seniors or first year graduate students",
+      "Pursuing a research-based master's or doctoral degree"
+    ]
+  },
+  {
+    id: 32,
+    name: "NSF Research Experience for Undergrads (REU)",
+    deadline: "December 1",
+    topics: ["STEM", "Research", "Internship"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://www.nsf.gov/funding/initiatives/reu",
+    description: "Summer or academic-year research programs for U.S. undergraduates offering hands-on participation in NSF-supported work. Students receive stipends, mentoring, and often housing and travel.",
+    benefits: [
+      "Students receive a stipend for the research period (varies by program)",
+      "Most programs provide housing for the duration of the program",
+      "Many programs offer travel to/from the site",
+      "Some REUs include meal allowances",
+      "Students work closely with faculty and researchers on a specific project"
+    ],
+    eligibility: [
+      "U.S. citizen, U.S. national, or U.S. permanent resident",
+      "Enrolled in an undergraduate degree-granting program",
+      "Full availability for the program duration",
+      "Other eligibility criteria may vary by site"
+    ]
+  },
+  {
+    id: 33,
+    name: "Patti Grace Smith Fellowship",
+    deadline: "August 1",
+    topics: ["Aerospace", "Internship"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://www.pgsfellowship.org/",
+    description: "Provides Black students with their first work experience in the aerospace industry, personalized mentorship, and connections to other extraordinary young Black people pursuing aerospace careers.",
+    benefits: [
+      "Paid summer internship at a leading aerospace company",
+      "Two mentors: one established expert in the field, one early-career professional",
+      "Membership in a supportive community of peers",
+      "Invitation to attend an annual summit",
+      "Eligible for grants up to $2,500"
+    ],
+    eligibility: [
+      "U.S. citizen, national, or permanent resident",
+      "Identify as Black or African American",
+      "Undergrad pursuing bachelors or associates degree",
+      "Never held a paid internship in the aerospace industry",
+      "Interest in pursuing a career in aerospace"
+    ]
+  },
+  {
+    id: 34,
+    name: "Paul and Daisy Soros Fellowship for New Americans",
+    deadline: "August 1",
+    topics: ["Graduate Funding"],
+    levels: ["Graduate"],
+    supported: true,
+    website: "https://pdsoros.org/",
+    description: "Fellowship honors the contributions of immigrants and children of immigrants to the United States. Supports one to two years of graduate study in any field.",
+    benefits: [
+      "Up to $90,000 total in graduate school funding over two years",
+      "$25,000 per year in stipend support",
+      "$20,000 per year in tuition support",
+      "Two fully funded weekend conferences in New York City",
+      "Campus visit from program leadership during the fall semester"
+    ],
+    eligibility: [
+      "Meet New American status",
+      "30 years old or younger as of application deadline",
+      "Hold bachelor's degree by start of the Fellowship",
+      "Must not have started 3rd year of graduate study"
+    ]
+  },
+  {
+    id: 39,
+    name: "Rhodes Scholarship",
+    deadline: "June 1",
+    topics: ["Graduate Funding", "Leadership", "Study Abroad"],
+    levels: ["Graduate"],
+    supported: true,
+    website: "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship/",
+    description: "Funding for 2 to 3 years of study at the University of Oxford in any field. Rhodes Scholars are chosen based on literary and scholastic attainments, energy to use their talents to the full, and their moral force of character.",
+    benefits: [
+      "Full coverage of University of Oxford course fees",
+      "Annual stipend of GBP 19,800 to cover living expenses",
+      "One-time relocation stipend",
+      "Annual round trip travel stipend",
+      "Covers application fee for Oxford",
+      "Dedicated scholar support team for academic, financial, and personal guidance",
+      "Access to the Rhodes House community and facilities"
+    ],
+    eligibility: [
+      "Citizen of a country with a designated Rhodes Scholarship constituency",
+      "Age 18-23 on 1st of October of application year",
+      "3.70 GPA",
+      "Recipients must also apply to Oxford (Rhodes Trust will support applicants)"
+    ]
+  },
+  {
+    id: 43,
+    name: "SMART Scholarship Program",
+    deadline: "October 1",
+    topics: ["STEM", "National Security", "Internship"],
+    levels: ["Undergraduate", "Graduate"],
+    supported: true,
+    website: "https://www.smartscholarship.org/smart/en",
+    description: "Aims to bring talented scientists, engineers, and researchers into the Department of Defense workforce. SMART Scholars receive full tuition, monthly stipends, health insurance, book allowances, plus 8-12 week summer internships.",
+    benefits: [
+      "Full tuition at any U.S. accredited college or university",
+      "Annual stipend ranging from $30,000 to $46,000, based on degree level",
+      "Book and health allowance",
+      "Summer internships at a DoD Sponsoring Facility",
+      "Experienced mentor during the program",
+      "Guaranteed full-time civilian employment with the DoD after graduation"
+    ],
+    eligibility: [
+      "Citizen of the U.S., Australia, Canada, New Zealand, or the United Kingdom",
+      "18 years or older in application year",
+      "Must have and maintain a minimum GPA of 3.0 on a 4.0 scale",
+      "Must be currently pursuing, or plan to pursue in Fall 2025, a degree in a SMART STEM discipline",
+      "Must complete summer internships at their assigned DoD Sponsoring Facility",
+      "Must accept a one-for-one post-graduation service commitment as a civilian employee with the DoD"
+    ]
+  },
+  {
+    id: 44,
+    name: "Solastra Fellowship",
+    deadline: "August 1",
+    topics: ["Aerospace", "Internship"],
+    levels: ["Undergraduate", "Graduate"],
+    supported: true,
+    website: "https://www.thesolastrafellowship.com/",
+    description: "A leadership and professional development program dedicated to supporting Latino students pursuing careers in aerospace and aviation. Founded to help close the diversity gap in the aerospace industry.",
+    benefits: [
+      "Paired with a mentor",
+      "Professional workshops",
+      "Diverse network",
+      "10-12 week aerospace internship",
+      "Attend summer summit with industry leaders and expand your professional network"
+    ],
+    eligibility: [
+      "Latino, born in a Latin-American country or of Latin-American descent",
+      "Undergrad or graduate",
+      "Interested in aerospace or aviation careers"
+    ]
+  },
+  {
+    id: 46,
+    name: "Tillman Scholars",
+    deadline: "December 1",
+    topics: ["Military", "Leadership"],
+    levels: ["Undergraduate", "Graduate"],
+    supported: true,
+    website: "https://pattillmanfoundation.org/apply/",
+    description: "Scholarships for remarkable service members, veterans, and military spouses as they look to begin their next chapter as public and private sector leaders.",
+    benefits: [
+      "Financial support for academic expenses, including tuition, books, and living costs",
+      "Lifelong leadership development through training, mentorship, and networking opportunities",
+      "Access to a network of peers, mentors, and industry leaders",
+      "$1,000 mini-grants to support leadership growth through training, certifications, or events",
+      "Media recognition of your service, academic work, and impact",
+      "Invitations to exclusive events including Pat Tillman Leadership Summit, Pat's Run, and SXSW"
+    ],
+    eligibility: [
+      "U.S. military veteran or active-duty service member from any branch (including National Guard)",
+      "Current or surviving spouse of a veteran or active-duty service member",
+      "Not a cadet or current ROTC participant with a future service commitment",
+      "Not a child dependent",
+      "Not a member of the U.S. Public Health Service, Intelligence Community, or a First Responder (unless also a military veteran or spouse)"
+    ]
+  },
+  {
+    id: 47,
+    name: "Udall Scholarship",
+    deadline: "December 1",
+    topics: ["STEM", "Public Service"],
+    levels: ["Undergraduate"],
+    supported: true,
+    website: "https://www.udall.gov/ourprograms/scholarship/scholarship",
+    description: "For students with the commitment and demonstrated leadership potential to make significant contributions by pursuing careers that impact Native healthcare, tribal policy or the environment.",
+    benefits: [
+      "Up to $7,000 for academic expenses such as tuition, fees, books, supplies, and room and board",
+      "Access to the Udall Alumni Network",
+      "Fully funded four-day Scholar Orientation with networking, leadership and professional development, and team-based problem solving"
+    ],
+    eligibility: [
+      "U.S. citizen, national, or permanent resident",
+      "Sophomore or junior",
+      "Either be committed to a career related to the environment, be an enrolled member of a Federally Recognized Indian Tribe, or be pursuing a career in health care or tribal public policy"
+    ]
+  }
+];
+
+// ════════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════════
+
+let currentSort = 'deadline';
+let activeTopics = new Set();
+let activeLevels = new Set();
+let searchQuery = '';
+let currentView = 'browse';
+let currentDetailAward = null;
+
+function loadFavs() {
+  try { return new Set(JSON.parse(localStorage.getItem('ncasd_favs') || '[]')); }
+  catch(e) { return new Set(); }
+}
+function saveFavsLS() {
+  try { localStorage.setItem('ncasd_favs', JSON.stringify([...favorites])); }
+  catch(e) {}
+}
+let favorites = loadFavs();
+
+function updateFavCount() {
+  document.getElementById('fav-count').textContent = favorites.size;
+}
+
+function toggleFavorite(id) {
+  if (favorites.has(id)) favorites.delete(id); else favorites.add(id);
+  saveFavsLS();
+  updateFavCount();
+  document.querySelectorAll('[data-award-id="' + id + '"]').forEach(b => {
+    b.classList.toggle('active', favorites.has(id));
+    b.title = favorites.has(id) ? 'Remove from saved' : 'Save award';
+  });
+  document.querySelectorAll('.award-card[data-card-id="' + id + '"]').forEach(c =>
+    c.classList.toggle('bookmarked', favorites.has(id))
+  );
+  if (currentDetailAward && currentDetailAward.id === id) {
+    document.getElementById('detail-fav-btn').classList.toggle('fav-active', favorites.has(id));
+  }
+  if (currentView === 'favorites') renderFavorites();
+}
+
+// ════════════════════════════════════════════════════════════════
+// FILTERING
+// ════════════════════════════════════════════════════════════════
+
+function getFiltered() {
+  return AWARDS.filter(a => {
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      const hay = [a.name, a.description, ...a.topics, ...a.levels, ...a.benefits, ...a.eligibility]
+        .join(' ').toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    if (activeLevels.size > 0) {
+      const ok = [...activeLevels].some(l => {
+        if (l === 'Graduate') return a.levels.some(al =>
+          ['Graduate', "Master's", 'Post-Baccalaureate', 'Recent Graduate'].includes(al));
+        return a.levels.includes(l);
+      });
+      if (!ok) return false;
+    }
+    if (activeTopics.size > 0) {
+      if (![...activeTopics].some(t => a.topics.includes(t))) return false;
+    }
+    return true;
+  });
+}
+
+// ════════════════════════════════════════════════════════════════
+// GROUPING
+// ════════════════════════════════════════════════════════════════
+
+const DL_ORDER = ["June 1", "August 1", "October 1", "December 1", "August 1 & December 1"];
+const LV_ORDER = ["Undergraduate", "Recent Graduate", "Post-Baccalaureate", "Master's", "Graduate", "Ph.D."];
+
+function groupBy(awards, type) {
+  // Alphabetical: group by first letter
+  if (type === 'alpha') {
+    const sorted = [...awards].sort((a, b) => a.name.localeCompare(b.name));
+    const g = {};
+    sorted.forEach(a => {
+      const letter = a.name[0].toUpperCase();
+      if (!g[letter]) g[letter] = [];
+      g[letter].push(a);
+    });
+    return Object.fromEntries(Object.entries(g).sort(([a], [b]) => a.localeCompare(b)));
+  }
+  // All other sorts
+  const g = {};
+  awards.forEach(a => {
+    const keys = type === 'deadline' ? [a.deadline] : type === 'topic' ? a.topics : a.levels;
+    keys.forEach(k => {
+      if (!g[k]) g[k] = [];
+      if (!g[k].find(x => x.id === a.id)) g[k].push(a);
+    });
+  });
+  if (type === 'deadline') {
+    const s = {}; DL_ORDER.forEach(d => { if (g[d]) s[d] = g[d]; }); return s;
+  }
+  if (type === 'level') {
+    const s = {}; LV_ORDER.forEach(l => { if (g[l]) s[l] = g[l]; }); return s;
+  }
+  return Object.fromEntries(Object.entries(g).sort(([a], [b]) => a.localeCompare(b)));
+}
+
+// ════════════════════════════════════════════════════════════════
+// CARD BUILDER
+// ════════════════════════════════════════════════════════════════
+
+function makeCard(award) {
+  const card = document.createElement('div');
+  card.className = 'award-card' + (favorites.has(award.id) ? ' bookmarked' : '');
+  card.setAttribute('tabindex', '0');
+  card.setAttribute('role', 'button');
+  card.dataset.cardId = award.id;
+
+  const tags = award.topics.slice(0, 3).map(t => '<span class="card-tag">' + t + '</span>').join('');
+  const unsup = award.supported ? '' : '<span class="card-unsupported-badge">Not Supported</span>';
+
+  card.innerHTML =
+    '<div class="card-top-row">' +
+      '<div class="card-name">' + award.name + '</div>' +
+      '<button class="bookmark-btn ' + (favorites.has(award.id) ? 'active' : '') + '" ' +
+        'data-award-id="' + award.id + '" ' +
+        'title="' + (favorites.has(award.id) ? 'Remove from saved' : 'Save award') + '">&#x2B50;</button>' +
+    '</div>' +
+    '<div class="badge-row">' +
+      '<span class="card-deadline-badge">Opt-in: ' + award.deadline + '</span>' +
+      unsup +
+    '</div>' +
+    '<div class="card-tags">' + tags + '</div>' +
+    '<span class="card-arrow">&#x2192;</span>';
+
+  card.querySelector('.bookmark-btn').addEventListener('click', e => {
+    e.stopPropagation();
+    toggleFavorite(award.id);
+  });
+  card.addEventListener('click', () => openDetail(award));
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDetail(award); }
+  });
+  return card;
+}
+
+// ════════════════════════════════════════════════════════════════
+// RENDER
+// ════════════════════════════════════════════════════════════════
+
+function renderGroups(groups, container) {
+  container.innerHTML = '';
+  if (!Object.keys(groups).length) {
+    container.innerHTML = '<div class="empty-state"><p>No awards match your filters.</p><small>Try clearing some filters or adjusting your search.</small></div>';
+    return;
+  }
+  Object.entries(groups).forEach(([name, awards]) => {
+    const sec = document.createElement('div');
+    sec.className = 'group-section';
+    sec.innerHTML =
+      '<div class="group-header">' +
+        '<span class="group-title">' + name + '</span>' +
+        '<div class="group-line"></div>' +
+        '<span class="group-count">' + awards.length + '</span>' +
+      '</div>' +
+      '<div class="card-grid"></div>';
+    awards.forEach(a => sec.querySelector('.card-grid').appendChild(makeCard(a)));
+    container.appendChild(sec);
+  });
+}
+
+function render() {
+  const filtered = getFiltered();
+  const rc = document.getElementById('result-count');
+  rc.textContent = (searchQuery || activeTopics.size || activeLevels.size)
+    ? filtered.length + ' of ' + AWARDS.length + ' awards' : '';
+  renderGroups(groupBy(filtered, currentSort), document.getElementById('main-content'));
+  renderActiveFilters();
+}
+
+function renderFavorites() {
+  const container = document.getElementById('fav-content');
+  container.innerHTML = '';
+  const favAwards = AWARDS.filter(a => favorites.has(a.id));
+  if (!favAwards.length) {
+    container.innerHTML =
+      '<div class="fav-panel-empty">' +
+        '<div class="fav-big">&#x2B50;</div>' +
+        '<p>No saved awards yet.<br>Click &#x2B50; on any award card to save it here.</p>' +
+      '</div>';
+    return;
+  }
+  const sec = document.createElement('div');
+  sec.className = 'group-section';
+  sec.innerHTML =
+    '<div class="group-header">' +
+      '<span class="group-title">Saved Awards</span>' +
+      '<div class="group-line"></div>' +
+      '<span class="group-count">' + favAwards.length + '</span>' +
+    '</div>' +
+    '<div class="card-grid"></div>';
+  favAwards.forEach(a => sec.querySelector('.card-grid').appendChild(makeCard(a)));
+  container.appendChild(sec);
+}
+
+function renderActiveFilters() {
+  const container = document.getElementById('active-filters');
+  container.innerHTML = '';
+  const all = [...activeTopics].map(t => ({ label: t, type: 'topic', val: t }))
+    .concat([...activeLevels].map(l => ({ label: l, type: 'level', val: l })));
+  if (!all.length) return;
+  all.forEach(f => {
+    const chip = document.createElement('div');
+    chip.className = 'filter-chip';
+    chip.innerHTML = f.label + ' <button title="Remove">&#x2715;</button>';
+    chip.querySelector('button').addEventListener('click', () => {
+      if (f.type === 'topic') {
+        activeTopics.delete(f.val);
+        document.querySelector('.pill-btn[data-topic="' + f.val + '"]')?.classList.remove('active');
+      } else {
+        activeLevels.delete(f.val);
+        document.querySelector('.pill-btn[data-level="' + f.val + '"]')?.classList.remove('active');
+      }
+      render();
+    });
+    container.appendChild(chip);
+  });
+  const ca = document.createElement('button');
+  ca.className = 'clear-all-btn';
+  ca.textContent = 'Clear all';
+  ca.addEventListener('click', () => {
+    activeTopics.clear();
+    activeLevels.clear();
+    document.querySelectorAll('.pill-btn[data-topic], .pill-btn[data-level]')
+      .forEach(b => b.classList.remove('active'));
+    render();
+  });
+  container.appendChild(ca);
+}
+
+// ════════════════════════════════════════════════════════════════
+// DETAIL PANEL
+// ════════════════════════════════════════════════════════════════
+
+function openDetail(award) {
+  currentDetailAward = award;
+  document.getElementById('detail-title-text').textContent = award.name;
+  document.getElementById('dp-deadline').textContent = 'Opt-in: ' + award.deadline;
+  document.getElementById('dp-level').textContent = award.levels.join(' \\u00B7 ');
+  document.getElementById('dp-desc').textContent = award.description;
+  document.getElementById('dp-benefits').innerHTML = award.benefits.map(b => '<li>' + b + '</li>').join('');
+  document.getElementById('dp-eligibility').innerHTML = award.eligibility.map(e => '<li>' + e + '</li>').join('');
+  document.getElementById('dp-not-advising').style.display = award.supported ? 'none' : 'flex';
+  document.getElementById('dp-footer-tags').innerHTML =
+    '<span>Topics:</span>' + award.topics.map(t => '<span class="detail-footer-tag">' + t + '</span>').join('');
+
+  const wb = document.getElementById('dp-website-btn');
+  if (award.website) {
+    wb.href = award.website;
+    wb.className = 'visit-btn';
+    wb.style.pointerEvents = '';
+  } else {
+    wb.href = '#';
+    wb.className = 'visit-btn no-link';
+    wb.onclick = e => e.preventDefault();
+    wb.title = 'No website linked yet';
+  }
+
+  const dfb = document.getElementById('detail-fav-btn');
+  dfb.classList.toggle('fav-active', favorites.has(award.id));
+  dfb.title = favorites.has(award.id) ? 'Remove from saved' : 'Save award';
+
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('close-btn').focus();
+}
+
+function closeDetail() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('close-btn').addEventListener('click', closeDetail);
+document.getElementById('overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('overlay')) closeDetail();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
+document.getElementById('detail-fav-btn').addEventListener('click', () => {
+  if (!currentDetailAward) return;
+  toggleFavorite(currentDetailAward.id);
+  document.getElementById('detail-fav-btn').classList.toggle('fav-active', favorites.has(currentDetailAward.id));
+});
+
+// ════════════════════════════════════════════════════════════════
+// VIEW SWITCHING
+// ════════════════════════════════════════════════════════════════
+
+function switchView(view) {
+  currentView = view;
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
+  document.getElementById('view-browse').style.display    = view === 'browse'    ? '' : 'none';
+  document.getElementById('view-favorites').style.display = view === 'favorites' ? '' : 'none';
+  document.getElementById('view-journey').style.display   = view === 'journey'   ? '' : 'none';
+  document.getElementById('view-office').style.display    = view === 'office'    ? '' : 'none';
+  if (view === 'favorites') renderFavorites();
+}
+
+document.querySelectorAll('.nav-tab').forEach(tab =>
+  tab.addEventListener('click', () => switchView(tab.dataset.view))
+);
+document.getElementById('fav-header-btn').addEventListener('click', () => switchView('favorites'));
+document.getElementById('clear-favs-btn').addEventListener('click', () => {
+  favorites.clear();
+  saveFavsLS();
+  updateFavCount();
+  document.querySelectorAll('.bookmark-btn.active').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.award-card.bookmarked').forEach(c => c.classList.remove('bookmarked'));
+  renderFavorites();
+});
+
+// ════════════════════════════════════════════════════════════════
+// SORT + FILTER PILLS
+// ════════════════════════════════════════════════════════════════
+
+document.querySelectorAll('.pill-btn[data-sort]').forEach(btn =>
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.pill-btn[data-sort]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentSort = btn.dataset.sort;
+    render();
+  })
+);
+document.querySelectorAll('.pill-btn[data-level]').forEach(btn =>
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('active');
+    btn.classList.contains('active')
+      ? activeLevels.add(btn.dataset.level)
+      : activeLevels.delete(btn.dataset.level);
+    render();
+  })
+);
+document.querySelectorAll('.pill-btn[data-topic]').forEach(btn =>
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('active');
+    btn.classList.contains('active')
+      ? activeTopics.add(btn.dataset.topic)
+      : activeTopics.delete(btn.dataset.topic);
+    render();
+  })
+);
+
+// ════════════════════════════════════════════════════════════════
+// SEARCH
+// ════════════════════════════════════════════════════════════════
+
+const searchInput = document.getElementById('search-input');
+const searchClear = document.getElementById('search-clear');
+
+searchInput.addEventListener('input', () => {
+  searchQuery = searchInput.value.trim();
+  searchClear.classList.toggle('visible', searchQuery.length > 0);
+  render();
+});
+searchClear.addEventListener('click', () => {
+  searchInput.value = '';
+  searchQuery = '';
+  searchClear.classList.remove('visible');
+  render();
+  searchInput.focus();
+});
+
+// ════════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════════
+
+updateFavCount();
+render();
+
+</script>
+</body>
